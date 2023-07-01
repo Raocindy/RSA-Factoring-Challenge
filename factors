@@ -1,0 +1,33 @@
+#!/usr/bin/python3
+"""Module that factorize as many numbers as possible
+ into a product of two smaller numbers."""
+from sys import argv
+
+
+def factorize_number(number):
+    """"print a simple descomposition of an integer > 1"""
+    factor = 2
+
+    if number < 2:
+        return
+    print()
+    print(number, "<- number-bef")
+    while number % factor:
+        factor += 1
+    print("{:.0f}={:.0f}*{:.0f}".format(number, number / factor, factor))
+    print(number, "<- number-aft")
+    print()
+
+if len(argv) != 2:
+    exit()
+
+try:
+    with open(argv[1]) as file:
+        line = file.readline()
+
+        while line != "":
+            number = int(line.split('\n')[0])
+            factorize_number(number)
+            line = file.readline()
+except:
+    pass
